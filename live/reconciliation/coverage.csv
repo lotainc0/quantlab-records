@@ -1,0 +1,70 @@
+symbol,live_trades,backtest_trades,ratio,verdict
+MRVL,62,15,0.24193548387096775,backtest UNDER-trades
+WOLF,58,24,0.41379310344827586,backtest UNDER-trades
+ARM,52,27,0.5192307692307693,comparable
+LCID,51,27,0.5294117647058824,comparable
+SPCE,51,34,0.6666666666666666,comparable
+AMD,50,19,0.38,backtest UNDER-trades
+SOXL,50,12,0.24,backtest UNDER-trades
+CLSK,49,20,0.40816326530612246,backtest UNDER-trades
+RKLB,47,13,0.2765957446808511,backtest UNDER-trades
+SMCI,44,24,0.5454545454545454,comparable
+HUT,43,24,0.5581395348837209,comparable
+WULF,39,19,0.48717948717948717,backtest UNDER-trades
+IONQ,39,23,0.5897435897435898,comparable
+RXRX,38,33,0.868421052631579,comparable
+MARA,37,19,0.5135135135135135,comparable
+MRNA,36,14,0.3888888888888889,backtest UNDER-trades
+IREN,35,24,0.6857142857142857,comparable
+CIFR,32,18,0.5625,comparable
+CORZ,30,12,0.4,backtest UNDER-trades
+MU,30,8,0.26666666666666666,backtest UNDER-trades
+ONDS,28,16,0.5714285714285714,comparable
+HOOD,27,7,0.25925925925925924,backtest UNDER-trades
+QCOM,27,7,0.25925925925925924,backtest UNDER-trades
+COIN,26,8,0.3076923076923077,backtest UNDER-trades
+RBLX,25,9,0.36,backtest UNDER-trades
+MSTR,24,11,0.4583333333333333,backtest UNDER-trades
+ENPH,19,12,0.631578947368421,comparable
+AVGO,19,0,0.0,live only
+SOFI,18,13,0.7222222222222222,comparable
+AMAT,15,5,0.3333333333333333,backtest UNDER-trades
+PLTR,13,7,0.5384615384615384,comparable
+SNAP,12,17,1.4166666666666667,comparable
+TQQQ,12,0,0.0,live only
+FNGU,11,3,0.2727272727272727,backtest UNDER-trades
+OXY,11,4,0.36363636363636365,backtest UNDER-trades
+CAT,10,1,0.1,backtest UNDER-trades
+ACHR,10,21,2.1,backtest OVER-trades
+RIVN,10,14,1.4,comparable
+RIOT,9,25,2.7777777777777777,backtest OVER-trades
+SLB,7,2,0.2857142857142857,backtest UNDER-trades
+UNH,7,3,0.42857142857142855,backtest UNDER-trades
+TSLA,7,1,0.14285714285714285,backtest UNDER-trades
+AAPL,7,0,0.0,live only
+UDOW,5,1,0.2,backtest UNDER-trades
+AMZN,4,1,0.25,backtest UNDER-trades
+MSFT,4,0,0.0,live only
+COP,3,1,0.3333333333333333,backtest UNDER-trades
+ABBV,3,3,1.0,comparable
+VLO,2,5,2.5,backtest OVER-trades
+LLY,2,1,0.5,comparable
+JOBY,2,15,7.5,backtest OVER-trades
+BULL,2,16,8.0,backtest OVER-trades
+TSM,2,1,0.5,comparable
+NVDA,1,2,2.0,comparable
+META,1,1,1.0,comparable
+LRCX,1,7,7.0,backtest OVER-trades
+FANG,1,4,4.0,backtest OVER-trades
+BTBT,1,7,7.0,backtest OVER-trades
+BA,0,4,,backtest only
+BAC,0,1,,backtest only
+BITF,0,5,,backtest only
+EQIX,0,1,,backtest only
+GE,0,1,,backtest only
+GOOGL,0,2,,backtest only
+MS,0,2,,backtest only
+NKE,0,1,,backtest only
+SBUX,0,3,,backtest only
+SPOT,0,4,,backtest only
+V,0,3,,backtest only

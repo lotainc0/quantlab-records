@@ -1,0 +1,20 @@
+{
+  "backtest_file": "results/runs/20260918_122104_single_reconcile-live_0f7087/trades.csv",
+  "live_file": "results/live/live_trades.csv",
+  "window_start": "2026-03-09 13:43:44.424821+00:00",
+  "window_end": "2026-08-18 23:55:00+00:00",
+  "n_live": 1261,
+  "n_backtest": 687,
+  "n_matched": 81,
+  "median_entry_gap_min": -10.133495266666667,
+  "median_entry_px_diff_bps": 54.632001209270065,
+  "median_exit_px_diff_bps": 30.43004743666326,
+  "verdicts": [
+    "MATCH RATE: 6% of live trades found a backtest counterpart. The two are largely taking DIFFERENT TRADES, so every aggregate below compares two populations that barely overlap. Treat totals and medians as describing two strategies, not one measured twice.",
+    "TRADE COUNT: similar VOLUME (687 backtest vs 1261 live, 0.54x). Volume only \u2014 whether they are the SAME trades is the match rate above, not this line.",
+    "ENTRY PRICES: backtest fills 55 bps WORSE than live. Conservative \u2014 results are, if anything, understated.",
+    "TIMING: median entry gap -10 min \u2014 consistent.",
+    "HOLD TIME: backtest median 8.1h vs live 27.6h (-19.5h). Large gaps mean the exit logic has drifted between the two.",
+    "PER-TRADE RESULT: backtest median -0.82% vs live -4.98% (+4.16 pp)."
+  ]
+}

@@ -1,0 +1,33 @@
+# GitHub Pages configuration for the public record.
+#
+# WHY THIS FILE LIVES IN THE PRIVATE REPO
+# publish.sh syncs with --delete, so anything in the public repo that the
+# script does not produce is removed on the next run. A _config.yml created
+# directly over there would survive exactly until the next publish. It is in
+# the COPY allowlist for that reason.
+#
+# SCOPE: this turns hosting on properly. It is NOT a design.
+# Without a theme, GitHub Pages serves markdown as unstyled HTML, which reads
+# as broken rather than plain. Primer is GitHub's own theme — clean, readable,
+# and neutral, so it does not presuppose the answer to "what is this site for",
+# which is still an open question (see the handoff spec, section 4).
+
+title: Trading research — the record
+description: >-
+  A public, checkable record of a systematic US-equity trading project.
+  Every experiment, the raw broker fills, and the writeups — including the
+  ones that say the strategy does not work.
+
+theme: jekyll-theme-primer
+
+# README.md becomes the landing page. Everything else is reachable by path.
+# The CSVs are served as static files so a claim can be checked directly.
+include:
+  - ledger
+  - live
+  - writeups
+  - deployment
+
+# Nothing here needs Jekyll's blog machinery.
+exclude:
+  - .gitignore

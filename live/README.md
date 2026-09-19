@@ -20,7 +20,11 @@ record. Any claim built on this data has to say so.
 | margin multiplier | 4 | 2 |
 | period | 2026-03-09 → 2026-09-18 | 2026-09-19 → |
 | deployed on | a machine nobody could inspect | a server I control, commit recorded |
-| StockBot commit | not knowable | `ed854ce`, verified |
+| StockBot commit | not knowable | `ed854ce` at the boundary, verified |
+
+The commit above is the one running when this boundary was drawn; the
+currently deployed commit is in `deployment/DEPLOYED.md`, which is
+regenerated on every verify.
 
 **These are two different records and must not be concatenated.** The account
 changed, the starting equity changed, the multiplier changed, and the code

@@ -95,6 +95,7 @@ check is not evidence.
 | path | what |
 |---|---|
 | [`writeups/`](writeups/2026-09-19-three-measurements.md) | the results, in plain English |
+| [`ledger/`](ledger/) | **browse every run** — filterable, one link per run |
 | [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 465 rows, parameters and results |
 | [`ledger/experiments.jsonl`](ledger/experiments.jsonl) | the same, append-only |
 | [`live/live_trades.csv`](live/live_trades.csv) | 1,713 round trips, paired from real fills |

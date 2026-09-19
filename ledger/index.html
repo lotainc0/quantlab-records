@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- GENERATED SOURCE - edit quantlab/publish/site/index.html.
+     Overwritten by publish.sh on every publish. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledger — every run</title>
+<link rel="stylesheet" href="ledger.css">
+</head>
+<body>
+<main>
+  <h1>The ledger</h1>
+  <p class="lede">
+    Every experiment this project has run. <strong id="entry-count">Loading…</strong>
+    Raw data: <a href="experiments.csv">experiments.csv</a> ·
+    <a href="experiments.jsonl">experiments.jsonl</a> ·
+    <a href="../">back to the record</a>
+  </p>
+
+  <noscript>
+    <p class="warn">This table needs JavaScript. The underlying data does not —
+    download <a href="experiments.csv">experiments.csv</a> or
+    <a href="experiments.jsonl">experiments.jsonl</a>.</p>
+  </noscript>
+
+  <div id="controls" hidden></div>
+  <p id="status">Loading the ledger…</p>
+  <table id="ledger" hidden><thead></thead><tbody></tbody></table>
+</main>
+<script src="ledger.js"></script>
+<script src="table.js"></script>
+</body>
+</html>

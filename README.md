@@ -88,14 +88,19 @@ fingerprint `0f7087e523c1`, universe hash `d848afd031`
 
 ## What is here
 
+Every row links to the thing itself. That is the point — a claim you cannot
+check is not evidence.
+
 | path | what |
 |---|---|
-| `writeups/` | the results, in plain English |
-| `ledger/experiments.csv` | every run: 463+ rows, parameters and results |
-| `ledger/experiments.jsonl` | the same, append-only |
-| `live/` | the raw broker record — fills, orders, round trips |
-| `live/reconciliation/` | simulator vs live, trade by trade |
-| `deployment/DEPLOYED.md` | the commit currently running, machine-generated |
+| [`writeups/`](writeups/2026-09-19-three-measurements.md) | the results, in plain English |
+| [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 465 rows, parameters and results |
+| [`ledger/experiments.jsonl`](ledger/experiments.jsonl) | the same, append-only |
+| [`live/live_trades.csv`](live/live_trades.csv) | 1,713 round trips, paired from real fills |
+| [`live/live_fills.csv`](live/live_fills.csv) | 2,119 raw fill activities |
+| [`live/reconciliation/`](live/reconciliation/verdict.json) | simulator vs live, trade by trade |
+| [`live/README.md`](live/README.md) | the account boundary — read before quoting any figure |
+| [`deployment/DEPLOYED.md`](deployment/DEPLOYED.md) | the commit currently running, machine-generated |
 
 Each ledger row records a **code fingerprint** (a hash of the engine source) and
 a **universe hash** (a hash of the symbol list). A result therefore cannot be

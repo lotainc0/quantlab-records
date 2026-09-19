@@ -13,10 +13,10 @@
 # which is still an open question (see the handoff spec, section 4).
 
 title: Trading research — the record
-description: >-
-  A public, checkable record of a systematic US-equity trading project.
-  Every experiment, the raw broker fills, and the writeups — including the
-  ones that say the strategy does not work.
+# Kept SHORT on purpose: the Primer theme renders "<title> | <description>",
+# so a long one produces a <title> that browser tabs and search results cut
+# off mid-sentence. The full framing belongs in the README, not the tab.
+description: Evidence from a systematic US-equity trading project.
 
 theme: jekyll-theme-primer
 

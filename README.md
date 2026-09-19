@@ -3,7 +3,8 @@
 A public, checkable record of a systematic US-equity trading project: what was
 tested, what the results were, and what is running now.
 
-**Both completed measurements came back negative.** They are published here in
+**Two completed measurements came back negative, and a third reversed a
+conclusion I had drawn from my own record.** All three are published here in
 full. That is the point of the repository, not an admission buried in it.
 
 ---

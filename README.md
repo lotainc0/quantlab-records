@@ -102,6 +102,7 @@ check is not evidence.
 | [`live/reconciliation/`](live/reconciliation/verdict.json) | simulator vs live, trade by trade |
 | [`live/README.md`](live/README.md) | the account boundary — read before quoting any figure |
 | [`deployment/DEPLOYED.md`](deployment/DEPLOYED.md) | the commit currently running, machine-generated |
+| [`freeze/`](freeze/stockbot-momentum-1.json) | **the declared configuration, and the date it was declared** |
 
 Each ledger row records a **code fingerprint** (a hash of the engine source) and
 a **universe hash** (a hash of the symbol list). A result therefore cannot be
@@ -143,6 +144,35 @@ is clean, and how many times the process has restarted.
 Results from before that date came from a different account that has since been
 deleted, under configurations that changed during the window — `live/README.md`
 explains the boundary. **The two must not be concatenated.**
+
+### The freeze
+
+The older record is uninterpretable for one reason above all: the strategy, the
+parameters and the engine all changed *during* the window, so nobody can say
+what was being tested. A freeze is the fix.
+
+[`freeze/stockbot-momentum-1.json`](freeze/stockbot-momentum-1.json) declares
+the exact configuration running from 2026-09-19 — the deployed commit, 84
+symbols and 38 settings — and it was committed **alone, touching nothing else**,
+so the commit timestamp is unambiguous and cannot be backdated after the fact.
+
+Anyone can publish a backtest. A backtest is a claim about what would have
+happened, written by someone who already knows what did. What you can check
+here instead is narrower and harder to fake: that a configuration was declared
+on a date, and then left alone. A test in the private repo compares the freeze
+against the deployed commit on every run and fails when they diverge.
+
+Breaking a freeze is allowed and expected. It is not allowed to be quiet: it
+takes an explicit commit that closes one period and opens the next, so this
+becomes a sequence of dated periods rather than one continuous claim. Editing
+an existing freeze so the test passes again is the one move that is off the
+table.
+
+Two things it deliberately is not. It is **not** evidence the strategy works —
+the measurements say it does not, and a frozen period that loses and is
+reported honestly still demonstrates the discipline being evidenced. And it is
+**not swing-only**: the bot takes day trades too, and the freeze records what
+runs rather than what would look better.
 
 ## The stopping condition
 

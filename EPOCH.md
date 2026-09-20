@@ -32,6 +32,28 @@ verdict and nearly the same overfitting signature. That is evidence about the
 round-trip friction sits against roughly 1bp of gross signal, and no amount of
 signal quality closes that gap.
 
+**ONE DECLARED EXCEPTION, 2026-09-20: the sentiment ablation.** The three
+rows meant to answer "does news help?" — `news-buggy`, `news-fixed`,
+`news-off` — are VOID. All three executed news-off, because the news caches
+held one truncated page and the coverage check correctly refused to serve
+them. They are bit-identical to each other and measure nothing.
+
+Re-running them under the repaired news path **repairs a broken measurement
+rather than adding to the arena.** It is permitted here for three reasons,
+stated before the runs rather than after:
+
+1. It cannot change Epoch 1's verdict. It measures whether news moves the
+   strategy, not whether the arena is winnable. That question was settled by
+   two walk-forwards and is not reopened.
+2. The question is the project's founding claim and has never been tested in
+   482 rows. Leaving it unanswered is a hole a skeptic opens in one minute.
+3. Sentiment data reaches back only to ~2015 and is thin on ETFs, so this is
+   the ONLY arena where it can be asked at all. Deferring it to Epoch 2 would
+   defer it forever.
+
+Nothing else is exempt. A recipe that measures strategy performance at five
+minutes stays closed.
+
 **No new five-minute runs will be recorded.** The recipes still exist and the
 data is still cached, so anything here can be reproduced; nothing new will be
 added.

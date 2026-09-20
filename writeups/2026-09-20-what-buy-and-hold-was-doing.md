@@ -133,10 +133,27 @@ bars does not clear the bar. The arena does not inherit that verdict: the data
 is clean, spans 27 years, is survivorship-free, and carries a benchmark on
 every row. A second signal tested there is more Epoch 2, not a new epoch.
 
-**Sentiment has never been measured, in 481 rows.** The ablation designed to
-answer it ran news-off on both arms because of a data-truncation defect — the
-two rows are bit-identical. The engine now serves news correctly. That
-measurement remains owed, and the project is named after it.
+**Sentiment has now been measured, and it hurts.** The ablation that was owed
+since the project began ran on 2026-09-20, all three arms under one code
+fingerprint:
+
+| arm | return | Sharpe | signals |
+|---|---|---|---|
+| news off | **−56.2%** | −0.237 | 2,138 |
+| news on, as the live bot scores it | −59.0% | −0.272 | 2,812 |
+| news on, scoring bug fixed | −61.5% | −0.293 | 2,658 |
+
+News adds 24–32% more signals, which become 163–210 more trades, which cost
+$4,000–$5,600 more in friction. In an arena where ~7bp of round-trip cost sits
+against ~1bp of gross signal, the sentiment module is a turnover amplifier and
+every extra trade is a loss. Fixing the scoring bug made it *worse* than
+leaving it in.
+
+One run per arm and no walk-forward, so this is an ablation rather than a
+validated finding — and it tests keyword-counting sentiment at a 10% weight
+inside a momentum strategy, not "sentiment" as a category. But the founding
+question of this project now has a measurement attached to it instead of an
+assumption.
 
 ---
 

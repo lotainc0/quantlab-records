@@ -5,6 +5,54 @@ itself is worth less than one that says what it got wrong.
 
 ---
 
+## 2026-09-20 — the sentiment ablation, finally run
+
+**What was wrong.** Three ledger rows — `news-buggy`, `news-fixed`,
+`news-off`, recorded 2026-08-21 — were meant to answer whether news sentiment
+helps. All three executed **news-off**, because the news caches held one
+truncated page and the coverage check correctly refused to serve them. They
+are bit-identical and measure nothing. The project is named after the
+question they failed to ask.
+
+**Re-run 2026-09-20** under the repaired news path, all three arms under one
+code fingerprint `3c354d0bc7c1`, same universe, same dates, 65,020 articles
+across 18 symbols verified served:
+
+| arm | return | Sharpe | trades | signals | vs news-off |
+|---|---|---|---|---|---|
+| **news-off** | **−56.22%** | **−0.237** | 1,447 | 2,138 | — |
+| news-buggy (substring, as live runs it) | −59.02% | −0.272 | 1,657 | 2,812 | **−2.8pp** |
+| news-fixed (word-boundary) | −61.50% | −0.293 | 1,610 | 2,658 | **−5.3pp** |
+
+**Sentiment makes it worse, and the mechanism is measured.** News adds 24–32%
+more signals (+520 and +674), which become 163–210 more trades, which cost a
+further $3,984–$5,644 in friction. In an arena where roughly 7bp of round-trip
+cost sits against roughly 1bp of gross signal, every extra trade is a loss. The
+sentiment module is a turnover amplifier.
+
+**Correcting the scoring bug made it worse, not better.** The word-boundary
+version — the one that reads headlines *properly* — underperformed the buggy
+substring version it was meant to fix, by 2.5pp. Whatever the lexicon is
+detecting, reading it correctly does not help.
+
+**What this does NOT establish.** One run per arm, no walk-forward, no deflated
+Sharpe: this is an ablation, not a validated finding. It tests keyword-counting
+sentiment weighted at `w_news = 0.10` inside a vote-counting momentum strategy
+— not "sentiment" as a category. And it lives in the five-minute arena, which
+is friction-dominated by construction, so the result may not transfer to a
+horizon where turnover is cheap.
+
+**Why it was run in a closed epoch.** Declared in `EPOCH.md` before the runs,
+not after. It repairs a broken measurement rather than adding to the arena, it
+cannot change Epoch 1's verdict, and sentiment data only reaches back to ~2015
+and is thin on ETFs — so this is the only arena where the question can be
+asked at all.
+
+**The void rows are kept.** They are not deleted or rewritten. This entry is
+the correction of record.
+
+---
+
 ## 2026-09-20 — no walk-forward ever recorded what buy-and-hold earned
 
 **What is missing.** `compare_to_benchmark` was called in single-run mode and

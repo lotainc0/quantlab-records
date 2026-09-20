@@ -17,10 +17,17 @@ record. Any claim built on this data has to say so.
 |---|---|---|
 | account | `PA3O…` (deleted 2026-09-18) | `PA3XIV0R8EDH` |
 | starting equity | unknown, ended at $136,210.17 | $100,000.00 |
-| margin multiplier | 4 | 2 |
+| margin multiplier | 4 | **1** |
 | period | 2026-03-09 → 2026-09-18 | 2026-09-19 → |
 | deployed on | a machine nobody could inspect | a server I control, commit recorded |
 | StockBot commit | not knowable | `ed854ce` at the boundary, verified |
+
+**Corrected 2026-09-20.** This table read `2` for the new account's
+multiplier. The broker reports **1**, queried directly from the account. The
+difference is not cosmetic: a multiplier of 1 is a cash account with no margin,
+so the bot's buying power is its equity rather than twice it, and every
+position it can open is half the size the number 2 implied. The old account ran
+at 4. Nothing else in this table changed.
 
 The commit above is the one running when this boundary was drawn; the
 currently deployed commit is in `deployment/DEPLOYED.md`, which is

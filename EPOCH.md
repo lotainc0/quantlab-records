@@ -36,12 +36,51 @@ signal quality closes that gap.
 data is still cached, so anything here can be reproduced; nothing new will be
 added.
 
-## Epoch 2 — daily bars, multi-week holds. **OPENS when the four gates below are cleared.**
+## Epoch 2 — daily bars, multi-week holds. **OPEN. Its first hypothesis is CLOSED, 2026-09-20.**
 
 Turnover drops about two orders of magnitude, which moves friction from the
 dominant term to noise. It is also the one place being small is an advantage:
 positions can be held through stretches an institution reporting monthly
 cannot.
+
+### The epoch is open; the first strategy in it is finished
+
+**This distinction is the whole point of the file.** An epoch is a
+comparability boundary, not an iteration counter and not a strategy version.
+Epoch 1 closed because the ARENA was measured unwinnable — two structurally
+different strategies landed in the same place. Epoch 2's arena has not been
+measured unwinnable. **One strategy inside it has.**
+
+Trend-following on daily bars, run as `wf-sectors-daily-carry`: 11
+survivorship-free sector and broad ETFs, 1999-03-10 to 2026-08-18, 27.4 years,
+6,411 out-of-sample observations, four pre-registered configurations declared
+as twelve trials after three instrument repairs.
+
+| | measured | required |
+|---|---|---|
+| OOS Sharpe | **0.279** | 0.66 (deflated, 12 trials) |
+| OOS Sharpe vs benchmark | **0.279** | above SPY's 0.569 |
+| alpha p.a. | +0.0027 | above 0 |
+| total return | +42.1% | — |
+| SPY over the same stretch | **+889.2%** | — |
+
+It clears one condition of three. **By the kill criteria written before the
+run, this configuration is closed.** Do not re-run this grid hoping for a
+different number.
+
+**Three repairs preceded it, and each improved the result without changing the
+verdict** — OOS Sharpe 0.080, then 0.119, then 0.279. Alpaca's daily bars were
+serving unadjusted splits; the cost model charged 12.6x too much at daily
+spacing; the walk-forward liquidated its whole book at every fold boundary.
+The trend is real and a reader should be suspicious of it, which is exactly
+why the benchmark condition matters more than the deflated-Sharpe one: SPY's
+0.569 does not move when the instrument is repaired.
+
+**What stays open.** The arena. The data is clean, spans 27 years, is
+survivorship-free by construction, and now carries a benchmark on every row. A
+second signal tested there is **more Epoch 2**, not Epoch 3 — same bar, same
+universe, same dates, same bar to clear. `countries7` remains an untouched
+cross-sectional holdout for whatever earns it.
 
 **Epoch 2 results will not be compared to Epoch 1 results.** Not "compared
 carefully" — not compared. Different bar, different holding period, different

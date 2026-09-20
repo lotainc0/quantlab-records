@@ -103,6 +103,7 @@ check is not evidence.
 | [`live/reconciliation/`](live/reconciliation/verdict.json) | simulator vs live, trade by trade |
 | [`live/README.md`](live/README.md) | the account boundary — read before quoting any figure |
 | [`deployment/DEPLOYED.md`](deployment/DEPLOYED.md) | the commit currently running, machine-generated |
+| [`EPOCH.md`](EPOCH.md) | **what may be compared with what** — read before comparing any two rows |
 | [`ERRATA.md`](ERRATA.md) | **corrections to published results** — read before quoting a Sharpe |
 | [`freeze/`](freeze/stockbot-momentum-1.json) | **the declared configuration, and the date it was declared** |
 

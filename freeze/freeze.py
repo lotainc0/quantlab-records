@@ -118,6 +118,10 @@ def main() -> None:
             "id_source": acct_src,
             "type": facts.get("broker account", ""),
             "equity_at_freeze": facts.get("equity at verify", ""),
+            # Machine-read by verify.sh from the broker, unlike the account id
+            # above. MAX_TOTAL_EXPOSURE_PCT in `config` is only coherent at or
+            # below it; test_freeze.py checks that it is.
+            "margin_multiplier": facts.get("margin multiplier", ""),
             "open_positions_at_freeze": facts.get("open positions", ""),
         },
         "universe": {"n_symbols": len(watchlist), "symbols": sorted(watchlist)},

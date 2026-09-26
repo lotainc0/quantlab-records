@@ -5,6 +5,114 @@ itself is worth less than one that says what it got wrong.
 
 ---
 
+## 2026-09-26 — after the first fold, in-sample scoring started from leftover cash
+
+**What was wrong.** Since `180a96f` (2026-09-20, "positions carry across
+walk-forward fold boundaries"), each fold after the first handed its
+out-of-sample cash to two places. The next out-of-sample run was correct: it
+received that cash plus the carried positions. The in-sample backtests that
+choose the next fold's parameters also received the cash, but they start flat
+and carry nothing, so they scored the grid on the cash left beside the book, not
+on the fold's equity. Found by the pre-run review of the momentum study,
+2026-09-25, and reproduced on synthetic data. For a fully invested book that is
+a few hundred dollars.
+
+**On the published trend result.** `wf-sectors-daily-carry` (all five rows)
+chose its winners in folds 2–9 on 21% to 100% of fold equity. That is the cash
+at each boundary, recomputed from the run's own trades, equity and frozen
+closes:
+
+| fold boundary | open positions | cash handed to in-sample scoring |
+|---|---|---|
+| 2004-03-08 | 3 | $40,588 (42%) |
+| 2007-03-08 | 2 | $55,742 (60%) |
+| 2010-03-07 | 0 | $97,198 (100%) |
+| 2013-03-06 | 5 | $21,787 (21%) |
+| 2016-03-05 | 0 | $123,052 (100%) |
+| 2019-03-05 | 2 | $74,460 (60%) |
+| 2022-03-04 | 1 | $99,761 (80%) |
+| 2025-03-03 | 1 | $105,647 (80%) |
+
+With 20% position caps in $20–$100 ETFs, $20,000 still buys positions of
+$4,000 or more, so rounding error is a few percent and the selection was
+probably little changed. That is an inference, not a measurement. **It is not
+re-run**: the grid is closed after three declared looks, and a fourth would need
+its own pre-registration. Its rows stand as recorded. They cannot be reproduced
+under the repaired code (fingerprint `c597472342e6`), and the lineage note in
+`test_experiment_log.py` says so.
+
+**What changed.** In-sample scoring now starts from the previous fold's final
+out-of-sample equity, and the out-of-sample handoff is unchanged (`8106fbc`).
+Each fold records its in-sample starting equity (`is_start_equity` in
+`walkforward_windows.csv`). Walk-forwards whose folds end flat are
+byte-identical under the repair. Repaired before the momentum study's one look.
+
+**One more property of daily bars, stated here.** The engine's 6% daily loss
+limit cannot fire at daily spacing: each bar is its own "day", measured
+against itself (`backtest/engine.py:876-898`). The kill-switch code is
+unchanged since the repository's baseline, `830e09c` (2026-08-31 16:57 UTC),
+so it was inert on the 14 daily-bar rows recorded since. The other 30 of the
+44 predate the history; the 8 of those that record the counter all show 0.
+No daily result relied on it.
+
+---
+
+## 2026-09-25 — symbol order changes results, and the ledger does not record it
+
+The engine iterates the universe in the order its symbols were loaded, and the
+order matters. Measured on the published `wf-sectors-daily-carry`: loading
+the same bars (identical `data_fingerprint`) alphabetically instead of in the
+`sectors11` preset's order gave **243 out-of-sample trades instead of 239 and
+an equity curve up to $5,251 apart.** The ledger records `symbols` sorted, and
+`universe_hash` sorts before hashing. So two rows with the same hash can be
+different experiments.
+
+**What it does not change.** 490 of the ledger's 491 rows name a preset, and
+no preset list has ever been reordered (`git log -p universes.py` shows only
+additions). For those rows the order is recoverable, and every run named in
+EPOCH.md or the README is among them. No `universe_hash` in the ledger spans two
+presets. The one exception is in the published ledger:
+`reconcile-live-scanwin` (2026-09-18, 84 symbols passed with `--symbols`),
+whose order cannot be recovered. The published reconciliation's
+`verdict.json` records its window, not the simulator run it used. So whether
+that finding rests on this row is not established here.
+
+**What changed.** Nothing in the engine. `report_xsmom.py` reproduces a
+recorded run only through its preset, and refuses a row without one.
+
+---
+
+## 2026-09-24 — three properties of the walk-forward, found while building the second study
+
+**1. The first warmup bars of every out-of-sample window could decide
+nothing.** Each test window was sliced with no history before it, and the
+engine skips its first `warmup_bars` bars. A carried book sat frozen and
+marked to market; no entry or exit could happen. Measured on the published
+`wf-sectors-daily-carry`: eight of nine folds made their first out-of-sample
+entry 157 to 301 trading bars in, and **21.7% of its out-of-sample bars could
+not make a decision.** No published number changes — the equity through those
+bars is real — but "nine folds of three years out of sample" meant less
+decision-making than it says.
+
+**2. In-sample selection favoured shorter warmups.** Each grid point was scored
+over the whole training slice, flat through its warmup, which shrinks its
+Sharpe by roughly the square root of the fraction it was active. Demonstrated:
+two otherwise identical points with 10- and 60-bar warmups, the 10 won every
+fold. **This did not affect the published trend result**: all four
+`trendbot_daily` points have a 155-bar warmup (checked 2026-09-25).
+
+**3. The warmup guard checked the first fold only**, on the stated assumption
+that equal calendar widths hold equal bar counts. Holidays make 730-day daily
+folds hold 502 to 506 bars. No published walk-forward had a fold below its
+floor (checked for both daily geometries in use).
+
+**What changed.** `--align-warmup` removes (1) and (2) for new runs; it is off
+by default and off is byte-identical to before (0.000e+00 across both
+reference runs). The guard now checks every fold. Code:
+`backtest/walkforward.py`; tests: `test_rotation_levers.py`.
+
+---
+
 ## 2026-09-20 — the sentiment ablation, finally run
 
 **What was wrong.** Three ledger rows — `news-buggy`, `news-fixed`,

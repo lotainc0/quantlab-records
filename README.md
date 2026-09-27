@@ -3,9 +3,11 @@
 A public, checkable record of a systematic US-equity trading project: what was
 tested, what the results were, and what is running now.
 
-**Two completed measurements came back negative, and a third reversed a
-conclusion I had drawn from my own record.** All three are published here in
-full. That is the point of the repository, not an admission buried in it.
+**On 5-minute bars, two completed measurements came back negative and a third
+reversed a conclusion I had drawn from my own record. On daily bars, three
+pre-registered studies: two negatives and one narrow positive, on portfolios
+nobody can buy.** All of it is published here in full. That is the point of
+the repository, not an admission buried in it.
 
 ---
 
@@ -26,6 +28,18 @@ The engine source is not here. Everything needed to *check a claim* is.
 ---
 
 ## The results so far
+
+**Epoch 2, daily bars (2026-09-20 to 2026-09-26):** three pre-registered
+studies, 17 counted trials. Read
+[the Epoch 2 writeup](writeups/2026-09-26-epoch-2.md).
+- **Trend-following on ETFs:** closed. Sharpe 0.279 against SPY's 0.569.
+- **Sector rotation:** closed. Sharpe 0.537 against SPY's 0.596; holding the
+  sectors equally earned 0.618.
+- **Industry momentum after publication:** survived, narrowly (t 1.90 against
+  1.645). Not investable, and no correction across the 17 trials leaves it
+  standing.
+
+**Epoch 1, 5-minute bars** — the three measurements below.
 
 ### 1. Walk-forward test — the strategy has no edge
 
@@ -94,9 +108,9 @@ check is not evidence.
 
 | path | what |
 |---|---|
-| [`writeups/`](writeups/2026-09-19-three-measurements.md) | the results, in plain English |
+| [`writeups/`](writeups/) | the results, in plain English: [Epoch 1](writeups/2026-09-19-three-measurements.md), [buy-and-hold](writeups/2026-09-20-what-buy-and-hold-was-doing.md), [Epoch 2](writeups/2026-09-26-epoch-2.md) |
 | [`ledger/`](ledger/) | **browse every run** — filterable, one link per run |
-| [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 465 rows, parameters and results |
+| [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 493 rows as of 2026-09-26, parameters and results |
 | [`ledger/experiments.jsonl`](ledger/experiments.jsonl) | the same, append-only |
 | [`live/live_trades.csv`](live/live_trades.csv) | 1,713 round trips, paired from real fills |
 | [`live/live_fills.csv`](live/live_fills.csv) | 2,119 raw fill activities |

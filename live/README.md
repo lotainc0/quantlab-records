@@ -135,34 +135,37 @@ true.**
 
 ## Regenerating
 
-```
-python export_fills.py --start YYYY-MM-DD --end YYYY-MM-DD
-```
-
-This overwrites the files in place. **Against the new account it will return
-only post-2026-09-19 data**, because the old account is gone — so a naive
-re-export silently replaces six months of history with a few days of it, and
-nothing warns you.
-
-It is recoverable, but only because this directory is now tracked:
+**Repaired 2026-09-28.** The weekly export is one command:
 
 ```
-git checkout -- results/live/
+python export_fills.py --start 2026-09-19 --through YYYY-MM-DD
 ```
 
-That safety net is the entire reason the directory was committed. Before it
-was, the same mistake would have been permanent. Better still, export the new
-account somewhere else and leave these files alone.
+- **It writes into `results/live/<account number>/`**, read from the broker,
+  so the new account can no longer land on this directory's files.
+- **It refuses anything that is not append-only** against the export already
+  in that directory: every earlier fill still present and unchanged. A
+  different account's directory, or a later `--start`, is refused and nothing
+  is written. `--force` overrides; there should be no reason to use it on this
+  record.
+- **`--through` is inclusive**, and the days are UTC. The bot places orders in
+  the US evening, which is the next UTC day, so export `--through` the
+  **Sunday** that ends the week. `--end` still works and is still exclusive at
+  midnight.
+- **It prints `fills through <timestamp>`**, the last fill it got. Check it
+  against the week's last trading session.
 
-**`--end` is exclusive at midnight.** It is parsed as a date and sent to Alpaca
-as `until`, so `--end 2026-09-24` stops at 00:00 that day and silently drops
-every fill from it. To include a day, end on the day after.
+`live_orders.csv` is a snapshot, not append-only: an order's status is as of
+the export, and a later window can add orders submitted after the week's last
+fill. The check covers fills, which are the record.
 
-The procedure that keeps both records whole, until `export_fills.py` learns an
-output directory (it is in `BACKLOG.md`):
+**Corrected 2026-09-28.** The 2026-09-27 export's last fill is an SPCE buy at
+**16:21:09 UTC** on Friday 2026-09-25, not 15:51:53 as written above. 15:51:53
+is the last sell. The repaired tool's first run printed the correct time. The
+files did not change.
 
-```
-python export_fills.py --start 2026-09-19 --end YYYY-MM-DD
-mv results/live/live_fills.csv results/live/live_orders.csv results/live/live_trades.csv results/live/account-redacted/
-git checkout -- results/live/live_fills.csv results/live/live_orders.csv results/live/live_trades.csv
-```
+Before the repair, the script wrote to `results/live/` itself, over this
+directory's six months, and `--end` silently dropped its own last day. The old
+three-step procedure (export, `mv`, `git checkout`) is retired. The tracked
+files remain the safety net: `git checkout -- results/live/` still restores
+them.

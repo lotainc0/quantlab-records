@@ -9,6 +9,10 @@ pre-registered studies: two negatives and one narrow positive, on portfolios
 nobody can buy.** All of it is published here in full. That is the point of
 the repository, not an admission buried in it.
 
+**The conclusion, published 2026-09-29:** I could not find an exploitable edge
+in US equities using public data and technical signals. Read
+[the conclusion](writeups/2026-09-29-conclusion.md).
+
 ---
 
 ## Why this exists
@@ -19,7 +23,7 @@ was declared, when, and what happened next.
 So this repository holds the **evidence**, not the pitch:
 
 - every experiment ever run, with the parameters used and the results obtained
-- the raw broker record — real fills, not a simulation of them
+- the raw broker record — the broker's own fills on a paper account, not my simulator's
 - the writeups, including the ones that say the strategy does not work
 - the currently deployed commit, verifiable against the running system
 
@@ -28,6 +32,12 @@ The engine source is not here. Everything needed to *check a claim* is.
 ---
 
 ## The results so far
+
+**The conclusion (2026-09-29).** Nothing cleared the bar set in advance (see
+[the stopping condition](#the-stopping-condition)), and the studies left to
+run could not be shown to have even odds of answering their questions, so the
+research is closed six months early. Read
+[the conclusion](writeups/2026-09-29-conclusion.md).
 
 **Epoch 2, daily bars (2026-09-20 to 2026-09-26):** three pre-registered
 studies, 17 counted trials. Read
@@ -108,7 +118,7 @@ check is not evidence.
 
 | path | what |
 |---|---|
-| [`writeups/`](writeups/) | the results, in plain English: [Epoch 1](writeups/2026-09-19-three-measurements.md), [buy-and-hold](writeups/2026-09-20-what-buy-and-hold-was-doing.md), [Epoch 2](writeups/2026-09-26-epoch-2.md) |
+| [`writeups/`](writeups/) | the results, in plain English: [Epoch 1](writeups/2026-09-19-three-measurements.md), [buy-and-hold](writeups/2026-09-20-what-buy-and-hold-was-doing.md), [Epoch 2](writeups/2026-09-26-epoch-2.md), [the conclusion](writeups/2026-09-29-conclusion.md) |
 | [`ledger/`](ledger/) | **browse every run** — filterable, one link per run |
 | [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 495 rows as of 2026-09-27, parameters and results |
 | [`ledger/experiments.jsonl`](ledger/experiments.jsonl) | the same, append-only |
@@ -157,8 +167,9 @@ defect in ledger rows written before 2026-09-18.
 ## The forward record
 
 The strategy now runs on a server under systemd, deployed from a named commit,
-with the deployed code verifiable against the published repository. A local
-script confirms the running commit matches the published one, that the checkout
+and the deployment record names that commit. The strategy's source repository
+is private, so a reader can check which commit is claimed, not the code. A local
+script confirms the running commit matches that repository's tip, that the checkout
 is clean, and how many times the process has restarted.
 
 **The forward record starts 2026-09-19**, on a fresh $100,000 paper account.
@@ -209,6 +220,12 @@ more machinery:
 That is a legitimate ending. Publishing it is the same commitment as publishing a
 positive result would be.
 
+**Invoked 2026-09-29, six months early.** Nothing had cleared the bar, and
+under stopping rules published in [`EPOCH.md`](EPOCH.md) before any further
+study, no remaining candidate could be shown to have even odds of detecting
+its effect. The conclusion is published as written:
+[the conclusion](writeups/2026-09-29-conclusion.md).
+
 ---
 
-*Yuepheng Yang — last updated 2026-09-28*
+*Yuepheng Yang — last updated 2026-09-29*

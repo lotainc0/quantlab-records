@@ -58,7 +58,10 @@ minutes stays closed.
 data is still cached, so anything here can be reproduced; nothing new will be
 added.
 
-## Epoch 2 — daily bars, multi-week holds. **OPEN. Its first hypothesis is CLOSED, 2026-09-20.**
+## Epoch 2 — daily bars, multi-week holds. **CLOSED 2026-09-29, at 17 trials.**
+
+*The epoch's closing entry is at the end of this section. The text in between
+is kept as it was written while the epoch was open.*
 
 Turnover drops about two orders of magnitude, which moves friction from the
 dominant term to noise. It is also the one place being small is an advantage:
@@ -265,6 +268,27 @@ needs a dated entry here that says so.
    instrument check and repaired. No gridded study.
 3. **No new pre-registration after 2027-01-31.** February and March 2027 are
    for the closing writeup, ahead of the 2027-03-31 kill date.
+
+### Epoch 2 closed — 2026-09-29, at 17 trials
+
+**No further study will be run in this epoch.** Rule 2 allowed three more
+trials. They are not spent. Closing earlier than a rule allows is stricter,
+not looser, so it needs no exception.
+
+The reason is rule 1. Both remaining candidates were checked on published
+figures, with no data read, and neither shows at least a 50% chance of
+clearing its own bar at the haircut prior:
+- **an industry-ETF replication of the third study:** about 26%;
+- **single-stock momentum after publication**, on Jegadeesh & Titman's
+  published long side: 43–62%, depending on a tracking error no source
+  publishes. That is not demonstrated.
+
+**The stopping condition is invoked six months early.** The conclusion, *I
+could not find an exploitable edge in US equities using public data and
+technical signals*, is published in
+[`writeups/2026-09-29-conclusion.md`](writeups/2026-09-29-conclusion.md).
+The forward record continues under the freeze. It is not part of any epoch's
+trial count.
 
 ---
 

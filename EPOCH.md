@@ -248,6 +248,24 @@ non-investable CRSP industry portfolios did not disappear after 1999. It says
 nothing about the sector SPDRs, where the same idea closed negative on nine
 funds, and it earns no claim until it replicates somewhere investable.
 
+### Stopping rules for the rest of Epoch 2 — adopted 2026-09-29, before any fourth study
+
+Declared here, publicly, before a fourth study is designed, so they cannot be
+fitted to one. All three are stricter than what came before. Proposed by an
+independent review (2026-09-27) and adopted by the owner. Loosening any of them
+needs a dated entry here that says so.
+
+1. **Power before pre-registration.** A study is pre-registered only if, at the
+   literature's post-publication haircut prior, it has at least a 50% chance of
+   clearing its own bar in its test window. The power calculation goes in the
+   spec before anything else. An industry-ETF replication of the third study
+   fails this (about 26%) and will not be run.
+2. **Epoch 2 closes at 20 trials.** 17 are spent. At most one more study, of
+   one trial, with two held in reserve for a run voided by a pre-declared
+   instrument check and repaired. No gridded study.
+3. **No new pre-registration after 2027-01-31.** February and March 2027 are
+   for the closing writeup, ahead of the 2027-03-31 kill date.
+
 ---
 
 ## Boundaries inside the record

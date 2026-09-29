@@ -16,6 +16,16 @@ not a result.
 Every number below is reproducible from this repository. Commands and run IDs
 are at the end.
 
+> **Corrected 2026-09-28.** "This repository" meant the private lab repository,
+> where the engine lives. The public record does not contain the engine source,
+> `runs.sh`, `export_fills.py` or `reconcile.py`, so the commands under
+> "Reproducing this" cannot be run from it. What the public record lets you
+> check is each result's ledger row, by run ID, code fingerprint and universe
+> hash, in `ledger/experiments.csv` (the `results/experiments.csv` named
+> below), the broker fills in `live/`, and the reconciliation output in
+> `live/reconciliation/`. Re-running a measurement needs the engine at the
+> commit whose fingerprint its row records. No number in this writeup changed.
+
 ---
 
 ## The short version
@@ -298,6 +308,13 @@ server I control, from a named commit, with the deployed code verifiable against
 the published repository. The record starts 2026-09-19. Whether it wins or
 loses, it will be reported honestly, with period boundaries wherever the
 configuration changes.
+
+> **Corrected 2026-09-28.** "Verifiable against the published repository"
+> overstates what an outside reader can do. The StockBot repository is
+> private. The public deployment record, `deployment/DEPLOYED.md`, names the
+> running commit and says whether it matches that repository's tip, but the
+> source itself is not published. A reader can check which commit is claimed
+> and when it was verified, not the code.
 
 I set a stopping condition in advance: if nothing clears the bar by the end of
 March 2027 — walk-forward positive after measured costs, a deflated Sharpe

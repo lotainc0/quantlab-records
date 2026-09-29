@@ -91,25 +91,26 @@ paper account's number in full, in this file and in the freeze record; it
 remains in the public repository's history, which is not rewritten. It is a
 paper account's number, not a credential.
 
-**`results/live/account-redacted/`** — re-exported 2026-09-24 with
-`--start 2026-09-19 --end 2026-09-25`, so it runs through that day's last fill
-(15:23:37 UTC). Same three filenames, one directory down, because the warning at
+**`results/live/account-redacted/`** — re-exported 2026-09-27 with
+`--start 2026-09-19 --end 2026-09-28`, so it runs through the week's last fill
+(Friday 2026-09-25, 15:51:53 UTC). Checked append-only against the 2026-09-24
+export: every earlier fill, order and round trip is unchanged. Same three filenames, one directory down, because the warning at
 the bottom of this file is real and was proved so on the way in: the export
 wrote over six months of history and said nothing. The old files were restored
 from git and the new ones moved aside.
 
 | | old account (this directory) | `account-redacted/` |
 |---|---|---|
-| round trips | 1,713 | **56** (106 fills) |
-| span | 2026-03-09 → 2026-09-16 | 2026-09-21 → 2026-09-24 |
-| realised | +$22,393.32 | **−$2,963.14** |
-| win rate | 40.7% | 17.9% |
-| profit factor | 1.06 | 0.15 |
-| median hold | 47.4 h | 24.3 h |
-| same-day share | 17.0% | 16.1% |
+| round trips | 1,713 | **77** (122 fills) |
+| span | 2026-03-09 → 2026-09-16 | 2026-09-21 → 2026-09-25 |
+| realised | +$22,393.32 | **−$5,128.26** |
+| win rate | 40.7% | 13.0% |
+| profit factor | 1.06 | 0.09 |
+| median hold | 47.4 h | 24.7 h |
+| same-day share | 17.0% | 11.7% |
 | extended-hours entries | 88.5% | **100%** |
 
-**Fifty-six round trips over four sessions is not a result and must not be
+**Seventy-seven round trips over five sessions is not a result and must not be
 quoted as one.** It is a check that the pipe is connected, and it is: the first
 fill landed on 2026-09-21, the Monday the handoff named.
 

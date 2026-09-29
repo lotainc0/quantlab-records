@@ -110,7 +110,7 @@ check is not evidence.
 |---|---|
 | [`writeups/`](writeups/) | the results, in plain English: [Epoch 1](writeups/2026-09-19-three-measurements.md), [buy-and-hold](writeups/2026-09-20-what-buy-and-hold-was-doing.md), [Epoch 2](writeups/2026-09-26-epoch-2.md) |
 | [`ledger/`](ledger/) | **browse every run** — filterable, one link per run |
-| [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 493 rows as of 2026-09-26, parameters and results |
+| [`ledger/experiments.csv`](ledger/experiments.csv) | every run: 495 rows as of 2026-09-27, parameters and results |
 | [`ledger/experiments.jsonl`](ledger/experiments.jsonl) | the same, append-only |
 | [`live/live_trades.csv`](live/live_trades.csv) | 1,713 round trips, paired from real fills |
 | [`live/live_fills.csv`](live/live_fills.csv) | 2,119 raw fill activities |
@@ -133,7 +133,11 @@ the purpose.
 
 ## What is not here, and why
 
-- **The engine source.** Not required to check any claim above.
+- **The engine source.** Not required to check any claim above. It does mean
+  the commands under "Reproducing this" in the writeups run in the private lab
+  repository, not in this one; the Epoch 1 writeup's "reproducible from this
+  repository" means that repository. What you can check here is each result's
+  ledger row, by run ID, code fingerprint and universe hash.
 - **Market data.** Roughly 103 MB of cached bars, re-fetchable from the vendor.
 - **Credentials, and the server's address.** The deployment record has its host
   redacted; it grants no verification value and only invites scanning.
@@ -207,4 +211,4 @@ positive result would be.
 
 ---
 
-*Yuepheng Yang — last updated 2026-09-19*
+*Yuepheng Yang — last updated 2026-09-28*
